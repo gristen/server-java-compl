@@ -14,8 +14,12 @@ public class BookEntity {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String author;
-    private String publishing;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private AuthorEntity author;
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private PublisherEntity publishing;
     private int year;
     private String kind;
 }

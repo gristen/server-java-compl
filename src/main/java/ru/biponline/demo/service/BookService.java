@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.biponline.demo.entity.BookEntity;
 import ru.biponline.demo.exception.ValidationException;
 import ru.biponline.demo.repo.BookRepo;
-import ru.biponline.demo.utils.ValidationUtils;
+/*import ru.biponline.demo.utils.ValidationUtils;*/
 
 @Service
 public class BookService {
@@ -13,7 +13,7 @@ public class BookService {
         this.repo=repo;
     }
     public void save(BookEntity book) throws ValidationException {
-        ValidationUtils.validateBook(book);
+        /*ValidationUtils.validateBook(book);*/
         repo.save(book);
     }
     public void delete(Long id){repo.deleteById(id);}

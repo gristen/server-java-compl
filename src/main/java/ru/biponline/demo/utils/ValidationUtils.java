@@ -4,6 +4,7 @@ package ru.biponline.demo.utils;
 import ru.biponline.demo.entity.BookEntity;
 import ru.biponline.demo.exception.ValidationException;
 
+/*
 public class ValidationUtils {
     public static void validateBook(BookEntity book) throws ValidationException {
         String author = book.getAuthor();
@@ -32,4 +33,5 @@ public class ValidationUtils {
         }
     }
 }
+*/
 
