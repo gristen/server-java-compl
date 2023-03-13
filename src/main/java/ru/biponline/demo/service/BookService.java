@@ -11,16 +11,12 @@ import ru.biponline.demo.utils.ValidationUtils;
 @Service
 public class BookService {
     private final BookRepo repo;
-
     public BookService(BookRepo repo) {
         this.repo = repo;
     }
-
-    public BookEntity save(BookEntity book) throws ValidationExceptionBook {
-        ValidationUtils.validateBook(book);
-        repo.save(book);
-        return book;
-    }
-    public void delete(Long id){ repo.deleteById(id); }
-    public Iterable<BookEntity> getAll(){ return  repo.findAll(); }
+    public void save(BookEntity book) {repo.save(book);}
+    public void delete(Long id){repo.deleteById(id);}
+    public Iterable<BookEntity> getAll(){return repo.findAll();}
+    public Iterable<BookEntity> getName(String name){
+        return repo.findByAuthor_name(name); }
 }

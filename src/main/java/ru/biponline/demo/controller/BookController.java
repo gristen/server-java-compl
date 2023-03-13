@@ -7,6 +7,7 @@ import ru.biponline.demo.response.BaseResponse;
 import ru.biponline.demo.response.BookListResponse;
 import ru.biponline.demo.response.BookResponse;
 import ru.biponline.demo.service.BookService;
+import ru.biponline.demo.utils.BookValidationUtils;
 
 import javax.validation.Valid;
 import javax.validation.executable.ValidateOnExecution;
@@ -27,12 +28,13 @@ public class BookController {
 
     @ValidateOnExecution
     @PostMapping("/add")
-    public ResponseEntity <BaseResponse> registration (@Valid @RequestBody BookEntity data) {
+    public ResponseEntity<BaseResponse> add(@RequestBody BookEntity data){
         try {
-            BookEntity temp = service.save(data);
-            return ResponseEntity.ok(new BookResponse(true, "Книга добавлена", temp));
+            BookValidationUtils.bookValidationUtils(data);
+            service.save(data);
+            return ResponseEntity.ok(new BaseResponse(true,"Книга добавленна"));
         } catch (Exception e){
-            return ResponseEntity.badRequest().body(new BookResponse(false, e.getMessage(), null));
+            return ResponseEntity. badRequest().body(new BaseResponse(false,e.getMessage()));
         }
     }
 
@@ -56,5 +58,9 @@ public class BookController {
         } catch (Exception e) {
             return ResponseEntity. badRequest().body(new BaseResponse(false, e.getMessage()));
         }
+    }
+    @GetMapping()
+    public ResponseEntity<BaseResponse> getPublisher(@RequestParam String name){
+        return ResponseEntity.ok(new BookListResponse(service.getName(name)));
     }
 }
