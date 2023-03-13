@@ -1,4 +1,7 @@
 package ru.biponline.demo.repo;
 
-public interface AuthorRepo {
+import org.springframework.data.repository.CrudRepository;
+import ru.biponline.demo.entity.AuthorEntity;
+
+public interface AuthorRepo extends CrudRepository<AuthorEntity, Long> {
 }

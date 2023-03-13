@@ -1,6 +1,6 @@
 package ru.biponline.demo.exception;
 
-public class ValidationExceptionAuthor extends ValidationException
+public class ValidationExceptionAuthor extends ValidationExceptionBook
 {
     public ValidationExceptionAuthor(String message)
     {
